@@ -1,0 +1,67 @@
+object wndMain: TwndMain
+  Left = 407
+  Height = 93
+  Top = 235
+  Width = 267
+  BorderStyle = bsDialog
+  Caption = 'ZeroKey'
+  ClientHeight = 93
+  ClientWidth = 267
+  Color = 16448250
+  LCLVersion = '1.6.0.4'
+  object cbIME: TComboBox
+    Left = 8
+    Height = 33
+    Top = 8
+    Width = 253
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Color = 16449535
+    DropDownCount = 1
+    Font.Height = 25
+    ItemHeight = 25
+    ItemIndex = 0
+    Items.Strings = (
+      'Telex'
+    )
+    ParentFont = False
+    Style = csDropDownList
+    TabOrder = 0
+    Text = 'Telex'
+  end
+  object seDelay: TSpinEdit
+    Left = 8
+    Height = 33
+    Top = 47
+    Width = 72
+    Font.Height = 25
+    Increment = 10
+    MaxValue = 1000
+    MinValue = 10
+    OnChange = seDelayChange
+    ParentFont = False
+    TabOrder = 1
+    Value = 50
+  end
+  object btnDelay: TButton
+    Left = 80
+    Height = 35
+    Top = 46
+    Width = 35
+    Caption = '?'
+    Font.Height = 25
+    OnClick = btnDelayClick
+    ParentFont = False
+    TabOrder = 2
+  end
+  object btnClose: TButton
+    Left = 139
+    Height = 35
+    Top = 46
+    Width = 122
+    Caption = 'Exit'
+    Font.Height = 25
+    OnClick = btnCloseClick
+    ParentFont = False
+    TabOrder = 3
+  end
+end
