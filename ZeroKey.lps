@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="9"/>
+    <BuildModes Active="Release"/>
+    <Units Count="6">
+      <Unit0>
+        <Filename Value="ZeroKey.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="mainform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="wndMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="MainForm"/>
+        <UsageCount Value="20"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="wordprocess.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="WordProcess"/>
+        <UsageCount Value="20"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="keycodedefine.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="KeyCodeDefine"/>
+        <UsageCount Value="20"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="systemhelper.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SystemHelper"/>
+        <UsageCount Value="20"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="keyutil.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="KeyUtil"/>
+        <UsageCount Value="20"/>
+      </Unit5>
+    </Units>
+    <JumpHistory HistoryIndex="-1"/>
+  </ProjectSession>
+</CONFIG>
