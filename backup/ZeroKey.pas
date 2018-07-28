@@ -60,7 +60,7 @@ begin
   Application.Initialize;
   Application.CreateForm(TwndMain, wndMain);
   Application.Run;
-  //On Exit
+
   UnhookWindowsHookEx(keyboardHook);
   UnhookWindowsHookEx(mouseHook);
   FreeAndNil(vnProcessor);

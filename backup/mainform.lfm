@@ -1,14 +1,14 @@
 object wndMain: TwndMain
-  Left = 489
+  Left = 407
   Height = 93
-  Top = 237
+  Top = 235
   Width = 267
   BorderStyle = bsDialog
   Caption = 'ZeroKey'
   ClientHeight = 93
   ClientWidth = 267
   Color = 16448250
-  LCLVersion = '1.8.4.0'
+  LCLVersion = '1.6.0.4'
   object cbIME: TComboBox
     Left = 8
     Height = 33
@@ -40,7 +40,7 @@ object wndMain: TwndMain
     OnChange = seDelayChange
     ParentFont = False
     TabOrder = 1
-    Value = 100
+    Value = 50
   end
   object btnDelay: TButton
     Left = 80
