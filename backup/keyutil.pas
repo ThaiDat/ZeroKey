@@ -194,7 +194,7 @@ begin
       end
     else if pos(LowerCase(st[i]),Selected_Key_Nosign^)<>0 then // if st[i] in key_no_sign
       begin
-        affectedPos := FindAffectedKey(result,st[i],TLoopMode.Up);
+        affectedPos := FindAffectedKey(result,st[i],TLoopMode.Down);
         if (affectedPos > 0) then
           begin
             t := GetPosInFull(result[affectedPos]);
