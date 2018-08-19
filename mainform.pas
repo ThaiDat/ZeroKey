@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   Spin,
-  KeyUtil;
+  KeyUtil, KeyCodeDefine;
 
 type
 
@@ -20,6 +20,7 @@ type
     seDelay: TSpinEdit;
     procedure btnCloseClick(Sender: TObject);
     procedure btnDelayClick(Sender: TObject);
+    procedure cbIMEChange(Sender: TObject);
     procedure seDelayChange(Sender: TObject);
   private
     { private declarations }
@@ -41,6 +42,26 @@ implementation
 procedure TwndMain.btnDelayClick(Sender: TObject);
 begin
   ShowMessage(MsgShow);
+end;
+
+procedure TwndMain.cbIMEChange(Sender: TObject);
+begin
+  case cbIME.ItemIndex of
+  0: begin
+       SelectedTypingMethod:= Telex;
+       Selected_Affect := @Telex_Affect;
+       Selected_Key_Sign := @Telex_Key_Sign;
+       Selected_Key_Nosign := @Telex_Key_Nosign;
+       Selected_Rule := @Telex_Rule;
+     end;
+  1: begin
+       SelectedTypingMethod:= Vni;
+       Selected_Affect := @Vni_Affect;
+       Selected_Key_Sign := @Vni_Key_Sign;
+       Selected_Key_Nosign := @Vni_Key_Nosign;
+       Selected_Rule := @Vni_Rule;
+     end;
+  end;
 end;
 
 procedure TwndMain.btnCloseClick(Sender: TObject);
