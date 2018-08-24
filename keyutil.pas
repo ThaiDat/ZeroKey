@@ -47,23 +47,23 @@ begin
       begin
         temp := Position - GetPosInFull(Alphabet_Nosign[position]);
         case temp of
-        1: insert(Selected_Key_Sign^[2],st,length(st)+1);
-        2: insert(Selected_Key_Sign^[3],st,length(st)+1);
-        3: insert(Selected_Key_Sign^[4],st,length(st)+1);
-        4: insert(Selected_Key_Sign^[5],st,length(st)+1);
-        5: insert(Selected_Key_Sign^[6],st,length(st)+1);
+        1: insert(SelectedMethod.Key_Sign^[2],st,length(st)+1);
+        2: insert(SelectedMethod.Key_Sign^[3],st,length(st)+1);
+        3: insert(SelectedMethod.Key_Sign^[4],st,length(st)+1);
+        4: insert(SelectedMethod.Key_Sign^[5],st,length(st)+1);
+        5: insert(SelectedMethod.Key_Sign^[6],st,length(st)+1);
         end;
         temp := Position - GetPosInFull(Alphabet_Sign[position]);
         tempChar := Alphabet_Nosign[ GetPosInFull( Alphabet_Sign[Position] )];
         result += tempchar;
         case temp of
-        1: insert(Selected_Key_Nosign^[6],st,i+1);
+        1: insert(SelectedMethod.Key_Nosign^[6],st,i+1);
         6: case LowerCase(tempChar) of
-           'a': insert(Selected_Key_Nosign^[1],st,i+1);
-           'e': insert(Selected_Key_Nosign^[2],st,i+1);
-           'o': insert(Selected_Key_Nosign^[3],st,i+1);
+           'a': insert(SelectedMethod.Key_Nosign^[1],st,i+1);
+           'e': insert(SelectedMethod.Key_Nosign^[2],st,i+1);
+           'o': insert(SelectedMethod.Key_Nosign^[3],st,i+1);
            end;
-        12: if (lowercase(tempChar) = 'a') then insert(Selected_Key_Nosign^[4],st,i+1) else insert(Selected_Key_Nosign^[5],st,i+1) ;
+        12: if (lowercase(tempChar) = 'a') then insert(SelectedMethod.Key_Nosign^[4],st,i+1) else insert(SelectedMethod.Key_Nosign^[5],st,i+1) ;
         end;
       end;
     inc(i);
@@ -79,21 +79,21 @@ begin
   if mode =TLoopMode.Down then
     for i:= 1 to length(source) do
       begin
-        if pos(Alphabet_Nosign[GetPosInFull(source[i])]{to nosign} ,Selected_Affect^[key]) <> 0 then
+        if pos(Alphabet_Nosign[GetPosInFull(source[i])]{to nosign} ,SelectedMethod.Affect^[key]) <> 0 then
           begin
-            if (pos(Alphabet_Nosign[GetPosInFull(source[i+1])]{to nosign} ,Selected_Affect^[key]) <> 0)
-                and (pos(Alphabet_Nosign[GetPosInFull(source[i+2])]{to nosign} ,Selected_Affect^[key]) <> 0 )
+            if (pos(Alphabet_Nosign[GetPosInFull(source[i+1])]{to nosign} ,SelectedMethod.Affect^[key]) <> 0)
+                and (pos(Alphabet_Nosign[GetPosInFull(source[i+2])]{to nosign} ,SelectedMethod.Affect^[key]) <> 0 )
             then
               exit(i+1)
-            else if ( (LowerCase(source[i]) = 'i') and (LowerCase(Source[i - 1]) = 'g') and (pos(Alphabet_Nosign[GetPosInFull(source[i+1])]{to nosign} ,Selected_Affect^[key]) <> 0) )
-                 or ( (LowerCase(source[i]) = 'u') and (LowerCase(Source[i - 1]) = 'q') and (pos(Alphabet_Nosign[GetPosInFull(source[i+1])]{to nosign} ,Selected_Affect^[key]) <> 0) )
+            else if ( (LowerCase(source[i]) = 'i') and (LowerCase(Source[i - 1]) = 'g') and (pos(Alphabet_Nosign[GetPosInFull(source[i+1])]{to nosign} ,SelectedMethod.Affect^[key]) <> 0) )
+                 or ( (LowerCase(source[i]) = 'u') and (LowerCase(Source[i - 1]) = 'q') and (pos(Alphabet_Nosign[GetPosInFull(source[i+1])]{to nosign} ,SelectedMethod.Affect^[key]) <> 0) )
                  then exit(i+1)
                  else exit(i);
           end;
       end
   else
   for i:= length(source) downto 1 do
-    if pos(Alphabet_Nosign[GetPosInFull(source[i])]{to nosign} ,Selected_Affect^[key]) <> 0 then exit(i);
+    if pos(Alphabet_Nosign[GetPosInFull(source[i])]{to nosign} ,SelectedMethod.Affect^[key]) <> 0 then exit(i);
   result := -1;
 end;
 
@@ -152,22 +152,22 @@ begin
   while i <= length(st) do
   begin
     if termEscape > 0 then result += st[i] //if TermEscaping Enabled
-    else if LowerCase(st[i]) = Selected_Key_Sign^[1] then //if st[i] = z (telex)
+    else if LowerCase(st[i]) = SelectedMethod.Key_Sign^[1] then //if st[i] = z (telex)
       begin
         t := 0;
         for j:=1 to length(result) do
-          if ( pos(Alphabet_Nosign[GetPosInFull(result[j])],Selected_Affect^[Selected_Key_Sign^[1]]) <> 0 ) and ( pos(result[j],'aeiouyAEIOUY') = 0 ) then
+          if ( pos(Alphabet_Nosign[GetPosInFull(result[j])],SelectedMethod.Affect^[SelectedMethod.Key_Sign^[1]]) <> 0 ) and ( pos(result[j],'aeiouyAEIOUY') = 0 ) then
             begin
               result[j] := Alphabet_Nosign[GetPosInFull(Alphabet_Sign[GetPosInFull(result[j])])]; // to normal
               t := 1;
             end;
         if t = 0 then
           begin
-            result+=Selected_Key_Sign^[1]; //no affected key
+            result+=SelectedMethod.Key_Sign^[1]; //no affected key
             termEscape := i;
           end;
       end
-    else if pos(LowerCase(St[i]),Selected_Key_Sign^)<>0 then // if st[i] in Key_sign other than z
+    else if pos(LowerCase(St[i]),SelectedMethod.Key_Sign^)<>0 then // if st[i] in Key_sign other than z
       begin
         if pos( Alphabet_Nosign[ GetPosInFull( Alphabet_Sign[ GetPosInFull(result[length(result)]) ] )],'aeiouyAEIOUY') <> 0 then
           loopMode := TLoopMode.Down //from the first letter to the last one.
@@ -181,18 +181,18 @@ begin
           begin
             t := GetPosInFull(result[affectedPos]); //A temp number, store the position of affectedLetter in Alphabet_Full
             //special combo 'uow' --> change to 'ươ'
-            if (t - GetPosInFull(Alphabet_Nosign[t]) = Selected_Rule^[LowerCase(st[i])]) then //duplicate key
+            if (t - GetPosInFull(Alphabet_Nosign[t]) = SelectedMethod.Rule^[LowerCase(st[i])]) then //duplicate key
               begin
                 result[affectedPos] := Alphabet_Nosign[t];
                 result += st[i];
                 termEscape := i;
               end
             else
-              result[affectedPos] := Alphabet_Full[ Selected_Rule^[LowerCase(st[i])] + GetPosInFull( Alphabet_Nosign[t]) ]
+              result[affectedPos] := Alphabet_Full[ SelectedMethod.Rule^[LowerCase(st[i])] + GetPosInFull( Alphabet_Nosign[t]) ]
           end
         else result += st[i]; //no affected key
       end
-    else if pos(LowerCase(st[i]),Selected_Key_Nosign^)<>0 then // if st[i] in key_no_sign
+    else if pos(LowerCase(st[i]),SelectedMethod.Key_Nosign^)<>0 then // if st[i] in key_no_sign
       begin
         affectedPos := FindAffectedKey(result,st[i],TLoopMode.Up);
         if (affectedPos > 0) then
@@ -205,14 +205,14 @@ begin
                 result[affectedPos-1] := Alphabet_Full[ 12 + GetPosInFull(Alphabet_Nosign[t])];
                 //12 is SelectedRule
               end
-            else if (t - GetPosInFull(Alphabet_Sign[t]) = Selected_Rule^[LowerCase(st[i]) ]) then //duplicate key
+            else if (t - GetPosInFull(Alphabet_Sign[t]) = SelectedMethod.Rule^[LowerCase(st[i]) ]) then //duplicate key
               begin
                 result[affectedPos] := Alphabet_Sign[t];
                 result += st[i];
                 termEscape := i;
               end
             else
-              result[affectedPos] := Alphabet_Full[ Selected_Rule^[LowerCase(st[i])] + GetPosInFull( Alphabet_Sign[t]) ]
+              result[affectedPos] := Alphabet_Full[ SelectedMethod.Rule^[LowerCase(st[i])] + GetPosInFull( Alphabet_Sign[t]) ]
           end
         else result += st[i]; //no affected key
       end

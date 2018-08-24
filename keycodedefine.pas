@@ -10,7 +10,13 @@ type
 
   DictAffectChar = array [char] of UnicodeString;
   PDictAffectChar = ^DictAffectChar;
-  TypingMethod = (Telex, Vni);
+  MethodName = (Telex, Vni);
+  TMethod = record
+    Rule : PDictRule;
+    Affect : PDictAffectChar;
+    Key_Sign, Key_Nosign: ^UnicodeString;
+    Method: MethodName;
+    end;
 const Alphabet_Full  : UnicodeString = 'aàảãáạâầẩẫấậăằẳẵắặbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụ......ưừửữứựvwxyỳỷỹýỵzAÀẢÃÁẠÂẦẨẪẤẬĂẰẲẴẮẶBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤ......ƯỪỬỮỨỰVWXYỲỶỸÝỴZ';
       Alphabet_Sign  : UnicodeString = 'aàảãáạaàảãáạaàảãáạbcddeèẻẽéẹeèẻẽéẹfghiìỉĩíịjklmnoòỏõóọoòỏõóọoòỏõóọpqrstuùủũúụ......uùủũúụvwxyỳỷỹýỵzAÀẢÃÁẠAÀẢÃÁẠAÀẢÃÁẠBCDDEÈẺẼÉẸEÈẺẼÉẸFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌOÒỎÕÓỌOÒỎÕÓỌPQRSTUÙỦŨÚỤ......UÙỦŨÚỤVWXYỲỶỸÝỴZ';
       Alphabet_Nosign: UnicodeString = 'aaaaaaââââââăăăăăăbcdđeeeeeeêêêêêêfghiiiiiijklmnooooooôôôôôôơơơơơơpqrstuuuuuu......ưưưưưưvwxyyyyyyzAAAAAAÂÂÂÂÂÂĂĂĂĂĂĂBCDĐEEEEEEÊÊÊÊÊÊFGHIIIIIIJKLMNOOOOOOÔÔÔÔÔÔƠƠƠƠƠƠPQRSTUUUUUU......ƯƯƯƯƯƯVWXYYYYYYZ';
@@ -23,11 +29,7 @@ const Alphabet_Full  : UnicodeString = 'aàảãáạâầẩẫấậăằẳ�
 var
   Telex_Rule, Vni_Rule : DictRule;
   Telex_Affect, Vni_Affect : DictAffectChar;
-
-  Selected_Rule : PDictRule;
-  Selected_Affect : PDictAffectChar;
-  Selected_Key_Sign, Selected_Key_Nosign: ^UnicodeString;
-  SelectedTypingMethod: TypingMethod;
+  SelectedMethod: TMethod;
 implementation
 
 
@@ -56,10 +58,10 @@ Vni_Rule['7'] := 12;          Vni_Affect['7'] := 'oôơuưOÔƠUƯ';
 Vni_Rule['8'] := 12;          Vni_Affect['8'] := 'aâăAÂĂ';
 Vni_Rule['9'] := 1;           Vni_Affect['9'] := 'dđDĐ';
 // Add new input method here
-SelectedTypingMethod:= Telex;
-Selected_Affect := @Telex_Affect;
-Selected_Key_Sign := @Telex_Key_Sign;
-Selected_Key_Nosign := @Telex_Key_Nosign;
-Selected_Rule := @Telex_Rule;
+SelectedMethod.Method:= Telex;
+SelectedMethod.Affect := @Telex_Affect;
+SelectedMethod.Key_Sign := @Telex_Key_Sign;
+SelectedMethod.Key_Nosign := @Telex_Key_Nosign;
+SelectedMethod.Rule := @Telex_Rule;
 end.
 

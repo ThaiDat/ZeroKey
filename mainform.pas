@@ -48,18 +48,18 @@ procedure TwndMain.cbIMEChange(Sender: TObject);
 begin
   case cbIME.ItemIndex of
   0: begin
-       SelectedTypingMethod:= Telex;
-       Selected_Affect := @Telex_Affect;
-       Selected_Key_Sign := @Telex_Key_Sign;
-       Selected_Key_Nosign := @Telex_Key_Nosign;
-       Selected_Rule := @Telex_Rule;
+       SelectedMethod.Method:= Telex;
+       SelectedMethod.Affect := @Telex_Affect;
+       SelectedMethod.Key_Sign := @Telex_Key_Sign;
+       SelectedMethod.Key_Nosign := @Telex_Key_Nosign;
+       SelectedMethod.Rule := @Telex_Rule;
      end;
   1: begin
-       SelectedTypingMethod:= Vni;
-       Selected_Affect := @Vni_Affect;
-       Selected_Key_Sign := @Vni_Key_Sign;
-       Selected_Key_Nosign := @Vni_Key_Nosign;
-       Selected_Rule := @Vni_Rule;
+       SelectedMethod.Method := Vni;
+       SelectedMethod.Affect:= @Vni_Affect;
+       SelectedMethod.Key_Sign := @Vni_Key_Sign;
+       SelectedMethod.Key_Nosign := @Vni_Key_Nosign;
+       SelectedMethod.Rule := @Vni_Rule;
      end;
   end;
 end;
