@@ -53,7 +53,7 @@ Vni_Rule['3'] := 2;           Vni_Affect['3'] := 'aâăeêioôơuưyAÂĂEÊIOÔ
 Vni_Rule['4'] := 3;           Vni_Affect['4'] := 'aâăeêioôơuưyAÂĂEÊIOÔƠUƯY';
 Vni_Rule['5'] := 5;           Vni_Affect['5'] := 'aâăeêioôơuưyAÂĂEÊIOÔƠUƯY';
 Vni_Rule['0'] := 0;           Vni_Affect['0'] := 'aâăeêioôơuưyAÂĂEÊIOÔƠUƯY';
-Vni_Rule['6'] := 6;           Vni_Affect['6'] := 'aâăoôơAÂĂOÔƠ';
+Vni_Rule['6'] := 6;           Vni_Affect['6'] := 'aâăeêoôơAÂĂEÊOÔƠ';
 Vni_Rule['7'] := 12;          Vni_Affect['7'] := 'oôơuưOÔƠUƯ';
 Vni_Rule['8'] := 12;          Vni_Affect['8'] := 'aâăAÂĂ';
 Vni_Rule['9'] := 1;           Vni_Affect['9'] := 'dđDĐ';

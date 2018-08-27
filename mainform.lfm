@@ -42,7 +42,7 @@ object wndMain: TwndMain
     OnChange = seDelayChange
     ParentFont = False
     TabOrder = 1
-    Value = 100
+    Value = 160
   end
   object btnDelay: TButton
     Left = 80
