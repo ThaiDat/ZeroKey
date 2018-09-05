@@ -16,13 +16,15 @@ object wndMain: TwndMain
     Width = 253
     Anchors = [akTop, akLeft, akRight, akBottom]
     Color = 16449535
-    DropDownCount = 1
+    DropDownCount = 2
     Font.Height = 25
     ItemHeight = 25
     ItemIndex = 0
     Items.Strings = (
       'Telex'
+      'Vni'
     )
+    OnChange = cbIMEChange
     ParentFont = False
     Style = csDropDownList
     TabOrder = 0
@@ -40,7 +42,7 @@ object wndMain: TwndMain
     OnChange = seDelayChange
     ParentFont = False
     TabOrder = 1
-    Value = 100
+    Value = 160
   end
   object btnDelay: TButton
     Left = 80

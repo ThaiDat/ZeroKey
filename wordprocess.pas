@@ -62,7 +62,7 @@ begin
   LengthTempWord := length(tempWord);
   if (TermEscapeCurrent = 0) and (CheckTermEscape(WordCurrent)) then TermEscapeCurrent:= LengthWordCurrent;
 
-  if ( pos(lowercase(char), Selected_Key_Sign^)<>0 ) or ( pos(LowerCase(char),Selected_Key_Nosign^) <> 0 ) then
+  if ( pos(lowercase(char), SelectedMethod.Key_Sign^)<>0 ) or ( pos(LowerCase(char),SelectedMethod.Key_Nosign^) <> 0 ) then
     self.WordCurrent := Encode(Decode(WordCurrent,TermEscapeCurrent) + char,TermEscapeCurrent)
   else
     self.WordCurrent := Encode(Decode(WordCurrent + char,TermEscapeCurrent),TermEscapeCurrent);

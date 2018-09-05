@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Forms, Interfaces, MainForm, WordProcess, windows, SysUtils, SystemHelper,
-  KeyUtil;
+  KeyUtil, KeyCodeDefine;
 
 {$R *.res}
 const WH_KEYBOARD_LL = 13;
@@ -39,6 +39,14 @@ begin
             char := LowerCase(char);
           if vnProcessor.AddWord(char) then result := 1;
         end;
+      VK_0..VK_9:
+        if SelectedMethod.Method = Vni then
+          begin
+            GetKeyboardState(kbstate);
+            unicodeResult := ToUnicode(info^.vkCode,info^.scanCode,kbState,@char,SizeOf(char),info^.flags);
+            if IsShift() then vnProcessor.OtherKeysProcess()
+            else if vnProcessor.AddWord(char) then result := 1;
+          end;
     else
       vnProcessor.OtherKeysProcess();
     end;
