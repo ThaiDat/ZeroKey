@@ -120,34 +120,45 @@ end;
 //Check whether TermEscape is enabled in current-processing word
 function CheckTermEscape(st : UnicodeString): boolean;
 var
-  lengthSt,i: Integer;
+  t,i: Integer;
   SyllableNum : byte = 0; //SyllableNum is the number of Syllable (in Vietnamese: âm tiết)
 begin
-  lengthSt:= length(st);
-  result := false;
-  if lengthSt < 2 then exit(false); //st has only 1 char
-  if st[1] in ['w','f','j','z'] then exit(true); //Vietnamese words couldn't start with these letters
-  case LowerCase(st[lengthSt]) of
-    'q','d','k','l','v','b': Exit(true);
+  t:= length(st); result := false;
+  if t < 2 then exit(false); //st has only 1 char
+  case LowerCase(st[t]) of
+    'q','d','k','l','v','b':
+       exit(true);
     'g':
-       if (st[lengthSt-1] <> 'N') and (st[lengthSt-1] <> 'n') then exit(true);
+       if (st[t-1] <> 'N') and (st[t-1] <> 'n') then exit(true);
     'h':
        begin
-         if pos(st[lengthSt-1],'NnCcGgPpTtKk') = 0 then exit(true);
-         if lengthSt = 2 then exit(false); // st has only 2 chars : (N/C/G/P/lengthSt)H
-         case LowerCase(st[lengthSt-1]) of
+         if pos(st[t-1],'NnCcGgPpTtKk') = 0 then exit(true);
+         if t = 2 then exit(false); // st has only 2 chars : (N/C/G/P/T)H
+         case LowerCase(st[t-1]) of
            'n','c':
+<<<<<<< HEAD
               if pos(ToAbClear(st[lengthSt-2]), 'aAeEiI' ) = 0 then exit(true);
+=======
+              if pos(Alphabet_NoSign[GetPosInFull( Alphabet_Sign[GetPosInFull(st[t-2])] )] , 'aAeEiI' ) = 0 then exit(true);
+>>>>>>> parent of e94a98a... Improve TermEscaping
            'p','t','k': exit(true);
-           'g' : if (st[lengthSt-2] <> 'N') and (st[lengthSt-2] <> 'n') then exit(true);
+           'g' : if (st[t-2] <> 'N') and (st[t-2] <> 'n') then exit(true);
          end;
        end;
     't','p','c','n','m':
+<<<<<<< HEAD
        if pos(ToAbClear(st[lengthSt-1] ) , 'aAeEiIoOuUyY' ) = 0 then exit(true);
   end;
   // To this line st[lengthSt] is default vowel (aeiou)
   for i := lengthSt downto 1 do
     if (pos(ToAbClear(st[i]) , 'aAeEiIoOuUyY') <> 0) then //not vowel
+=======
+       if pos(Alphabet_NoSign[GetPosInFull( Alphabet_Sign[GetPosInFull(st[t-1])] )] , 'aAeEiIoOuUyY' ) = 0 then exit(true);
+  end;
+  // To this line st[t] is default vowel (aeiou)
+  for i := t downto 1 do
+    if (pos(Alphabet_NoSign[GetPosInFull( Alphabet_Sign[GetPosInFull(st[i])] )] , 'aAeEiIoOuUyY') <> 0) then //not vowel
+>>>>>>> parent of e94a98a... Improve TermEscaping
       begin
         Inc(SyllableNum);
         break;
@@ -246,7 +257,7 @@ begin
   end;//end while
 end;
 //-----------------------------------------------------------------------------
-
+//-----------------------------------------------------------------------------
 procedure PasteString(pastestr: UnicodeString; BackSpTimes: byte);
 var
   tempClipbrd: UnicodeString;
