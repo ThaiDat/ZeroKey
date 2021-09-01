@@ -1,4 +1,4 @@
 # ZeroKey
 An VietNamese IME, written on Pascal
 # Note
-When you can't type Vietnamese, Increase the number in Main Window, it may helps
+This project is no longer maintained
